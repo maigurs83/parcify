@@ -1,0 +1,187 @@
+[
+    {
+        "model": "parcify_app.parcellocker",
+        "pk": 2,
+        "fields": {
+            "sizes": "XS,S,M,L,XL",
+            "status": "Maintanence",
+            "city": "Riga",
+            "address": "TC Alfa"
+        }
+    },
+    {
+        "model": "parcify_app.parcellocker",
+        "pk": 3,
+        "fields": {
+            "sizes": "XS,S,M,L,XL",
+            "status": "Open",
+            "city": "Ventspils",
+            "address": "TC Tobago"
+        }
+    },
+    {
+        "model": "parcify_app.parcellocker",
+        "pk": 4,
+        "fields": {
+            "sizes": "XS,S,M",
+            "status": "Closed",
+            "city": "Sigulda",
+            "address": "Rigas str"
+        }
+    },
+    {
+        "model": "parcify_app.parcellocker",
+        "pk": 5,
+        "fields": {
+            "sizes": "XS,S,M,L,XL",
+            "status": "Open",
+            "city": "Riga",
+            "address": "K.Ulmana str"
+        }
+    },
+    {
+        "model": "parcify_app.parcellocker",
+        "pk": 6,
+        "fields": {
+            "sizes": "XS,S,M",
+            "status": "Open",
+            "city": "Riga",
+            "address": "Brivibas str"
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 1,
+        "fields": {
+            "size": "XS",
+            "empty": true,
+            "parcelLocker": 2
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 2,
+        "fields": {
+            "size": "S",
+            "empty": false,
+            "parcelLocker": 2
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 3,
+        "fields": {
+            "size": "XS",
+            "empty": false,
+            "parcelLocker": 3
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 4,
+        "fields": {
+            "size": "S",
+            "empty": true,
+            "parcelLocker": 3
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 5,
+        "fields": {
+            "size": "S",
+            "empty": true,
+            "parcelLocker": 4
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 6,
+        "fields": {
+            "size": "M",
+            "empty": true,
+            "parcelLocker": 4
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 7,
+        "fields": {
+            "size": "S",
+            "empty": true,
+            "parcelLocker": 5
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 8,
+        "fields": {
+            "size": "M",
+            "empty": false,
+            "parcelLocker": 5
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 9,
+        "fields": {
+            "size": "L",
+            "empty": true,
+            "parcelLocker": 5
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 10,
+        "fields": {
+            "size": "XS",
+            "empty": false,
+            "parcelLocker": 6
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 11,
+        "fields": {
+            "size": "S",
+            "empty": true,
+            "parcelLocker": 6
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 12,
+        "fields": {
+            "size": "M",
+            "empty": true,
+            "parcelLocker": 6
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 13,
+        "fields": {
+            "size": "L",
+            "empty": true,
+            "parcelLocker": 2
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 14,
+        "fields": {
+            "size": "XL",
+            "empty": false,
+            "parcelLocker": 5
+        }
+    },
+    {
+        "model": "parcify_app.locker",
+        "pk": 15,
+        "fields": {
+            "size": "XS",
+            "empty": true,
+            "parcelLocker": 5
+        }
+    }
+]
