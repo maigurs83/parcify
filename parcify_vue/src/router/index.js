@@ -1,28 +1,28 @@
-import { createWebHashHistory, createRouter } from "vue-router";
-
-import NotFoundView from "@/views/NotFound.vue";
-import ParcelsView from "@/views/ParcelsView.vue";
-import ParcelView from "@/views/ParcelView.vue";
+// Composables
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-        {
-            path: '/parcels',
-            conponent: ParcelsView
-        },
-        {
-            path: '/parcels/:id',
-            conponent: ParcelView
-        },
-        {
-            path: '/:catchAll(.*)',
-            component: NotFoundView
-        }
-    ];
+  {
+    path: '/',
+    component: () => import('@/layouts/default/Default.vue'),
+    children: [
+      {
+        path: 'Parcels',
+        name: 'Parcels',
+        component: () => import('@/views/ParcelsView.vue'),
+      },
+      {
+        path: '',
+        name: 'Home',
+        component: () => import('@/views/Home.vue'),
+      },
+    ],
+  },
+]
 
 const router = createRouter({
-    history: createWebHashHistory(),
-    base: process.env.BASE_URL,
-    routes: routes
-});
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+})
 
 export default router

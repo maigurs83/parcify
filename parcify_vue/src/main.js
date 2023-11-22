@@ -1,16 +1,20 @@
-import { createApp } from 'vue';
-import VueAxios from 'vue-axios';
-import axios from 'axios';
-import router from './router/index.js';
-import App from './App.vue';
+/**
+ * main.js
+ *
+ * Bootstraps Vuetify and other plugins then mounts the App`
+ */
 
-axios.defaults.xsrfCookieName = 'csrftoken';
-axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
-axios.defaults.baseURL = process.env.apiUrl || 'http://127.0.0.1:8000/api/';
+// Plugins
+import { registerPlugins } from '@/plugins'
 
-const app = createApp(App);
+// Components
+import App from './App.vue'
 
-app.use(VueAxios, axios);
-app.use(router);
+// Composables
+import { createApp } from 'vue'
 
-app.mount('#app');
+const app = createApp(App)
+
+registerPlugins(app)
+
+app.mount('#app')

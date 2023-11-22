@@ -14,8 +14,6 @@ class ParcelLockerSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ParcelSerializer(serializers.ModelSerializer):
-    locker = LockerSerializer(many=False, read_only=True)
-    
     class Meta:
         model = Parcel
         fields = '__all__'
