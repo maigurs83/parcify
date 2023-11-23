@@ -5,6 +5,7 @@
 # Python RestAPI (parcify_app):
 * pip install django
 * pip install djangorestframework
+* pip instal psycopg2
 * pip install django-filter
 * pip install django-cors-headers
 * manage.py loaddata init_dump.json
