@@ -10,12 +10,12 @@
             <v-container>
               <v-row>
                 <v-col cols="12" sm="6" md="6">
-                  <v-text-field v-model="formData.sender" :rules="rules" label="Sender*" hint="Who is sender" persistent-hint
-                    required></v-text-field>
+                  <v-text-field v-model="formData.sender" :rules="rules" label="Sender*" hint="Who is sender"
+                    persistent-hint required></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="6">
-                  <v-text-field v-model="formData.receiver" :rules="rules" label="Receiver*" hint="Who is receiver" persistent-hint
-                    required></v-text-field>
+                  <v-text-field v-model="formData.receiver" :rules="rules" label="Receiver*" hint="Who is receiver"
+                    persistent-hint required></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6">
                   <v-text-field v-model="formData.placedOn" label="Placed On" readonly></v-text-field>
@@ -32,7 +32,7 @@
                 </v-col>
                 <v-col cols="12" sm="12">
                   <v-select v-model="formData.locker" :rules="rules" :items="lockersData" :item-props="lockerItemProps"
-                    label="Lockers*" required return-object single-line></v-select>
+                    label="Lockers*" required return-value></v-select>
                 </v-col>
               </v-row>
             </v-container>
@@ -72,9 +72,9 @@ export default {
     loading: false,
     timeout: null,
     rules: [value => new Promise(resolve => {
-          if (value == null || value == '') return resolve('Field value is a must, master.');
-          return resolve(true);
-      })],
+      if (value == null || value == '') return resolve('Field value is a must, master.');
+      return resolve(true);
+    })],
     formData: {
       sender: '',
       receiver: '',
@@ -90,14 +90,14 @@ export default {
       return {
         title: item.address,
         subtitle: item.city,
-        id: item.id
+        value: item.id
       }
     },
     async submit(event) {
       this.loading = true;
       const results = await event;
       //console.log('ParcelWindow.Validation():', JSON.stringify(results, null, 2));
-      if (results.valid){
+      if (results.valid) {
         const saveParcelResults = await this.saveParcelOrder(this.formData);
         console.log('ParcelWindow.Sumbit():', JSON.stringify(saveParcelResults, null, 2));
       }
@@ -106,23 +106,21 @@ export default {
     async saveParcelOrder(formData) {
       const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization':'Basic YWRtaW46cGFzc3dvcmQxMjM=' },
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM=' },
         body: JSON.stringify(formData)
       };
 
       const response = await fetch('http://localhost:8000/api/parcels/', requestOptions)
         .then(response => response.json())
-        .catch((error) => console.error(error));
+        .catch((error) => { new Promise(resolve => { return resolve(error); }); })
+        .finally(() => { return new Promise(resolve => { return resolve(false); }); });
 
-        return new Promise(resolve => {
-          if (response.statusCode == '500' || response.statusCode == '403' || response.detail !== null) return resolve(response);
-          return resolve(true);
-      });
+      return new Promise(resolve => { return resolve(response); });
     },
-    async validateField(value){
+    async validateField(value) {
       return new Promise(resolve => {
-          if (value == null || value == '') return resolve('Field value is a must, master.');
-          return resolve(true);
+        if (value == null || value == '') return resolve('Field value is a must, master.');
+        return resolve(true);
       })
     }
   }
