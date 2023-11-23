@@ -1,37 +1,47 @@
 <template>
   <v-container class="fill-height">
     <v-responsive class="align-top text-left fill-height">
-      <v-card title="Parcel Orders" style="background-color:transparent;">
+      <v-card flat class="mb-2 pa-2">
+        <v-card-title class="d-flex align-center pe-2">
+          <v-card-text><h2>Parcel Orders</h2></v-card-text>
+          <v-spacer></v-spacer>
+          <ParcelWindow :visible="showParcelWindow" :lockersData="lockersData.serverItems" @close="showParcelWindow=false" />
+          <v-btn color="accent" large @click.stop="showParcelWindow=true">Add New</v-btn>
+        </v-card-title>
         <v-data-table-server v-model:items-per-page="parcelsData.itemsPerPage" :headers="parcelsData.headers"
           :items-length="parcelsData.totalItems" :items="parcelsData.serverItems" :loading="parcelsData.loading"
           item-value="name" @update:options="getParcelsData">
         </v-data-table-server>
       </v-card>
-      <v-card title="Parcel Lockers" style="background-color:transparent;">
+      <v-card flat class="mt-2 pa-2">
+        <v-card-title class="d-flex align-center pe-2">
+          <v-card-text><h2>Parcel Lockers</h2></v-card-text>
+        </v-card-title>
         <v-data-iterator :items="lockersData.serverItems" item-value="id">
           <template v-slot:default="{ items }">
             <v-row>
-              <v-col v-for="item in items" :key="item.raw.id" cols="12" sm="8" md="4">
-                <v-card>
+              <v-col v-for="item in items" :key="item.raw.id" cols="16" xs="16" sm="6" md="4" lg="4" xl="2">
+                <v-card variant="tonal" color="primary">
                   <v-card-title class="d-flex align-center">
-                    <h3>{{ (item.raw.status=='Closed') ? '(!)' : '' }}</h3> <h4>{{ item.raw.city }}: {{ item.raw.address }}</h4>
+                    <h4>{{ (item.raw.status=='Closed') ? `(${ item.raw.status }):` : '' }} {{ item.raw.city }}</h4>
                   </v-card-title>
+
+                  <v-card-subtitle class="d-flex align-center">
+                    <h5>{{ item.raw.address }}</h5>
+                  </v-card-subtitle>
 
                   <v-card-text>
                     <h5>{{ item.raw.sizes }}</h5>
-                    {{ item.raw.status }}
                   </v-card-text>
 
-                  <v-divider></v-divider>
-
-                  <div class="d-flex justify-center ga-2 pa-2">
+                  <v-card-actions class="d-flex justify-center ga-2 pa-2">
                     <v-data-iterator :items="item.raw.lockers" item-value="id">
                       <template v-slot:default="{ items }">
                         <v-chip v-for="item in items" :key="item.raw.id" variant="flat"
                           :color="`${(item.raw.empty === true) ? 'green' : 'red'}`">{{ item.raw.size }}</v-chip>
                       </template>
                     </v-data-iterator>
-                  </div>
+                  </v-card-actions>
                 </v-card>
               </v-col>
             </v-row>
@@ -43,11 +53,12 @@
 </template>
 
 <script>
+import ParcelWindow from './ParcelWindow.vue'
 
 export default {
-  name: "Parcels",
+  name: "Parcels.Main",
   mounted() {
-    this.getLockersData(1, 10, null);
+    this.getLockersData();
   },
   methods: {
     async getParcelsData({ page, itemsPerPage, sortBy }) {
@@ -62,13 +73,9 @@ export default {
         .catch(errors => console.error(errors))
         .finally(() => { this.parcelsData.loading = false });
     },
-    async getLockersData({ page, itemsPerPage, sortBy }) {
+    async getLockersData() {
       this.lockersData.loading = true;
-      const requestOptions = {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-        //body: JSON.stringify({ title: 'React POST Request Example' })
-      };
+      const requestOptions = {};
       await fetch('http://localhost:8000/api/parcel_lockers/', requestOptions)
         .then(response => response.json())
         .then(data => {
@@ -101,7 +108,11 @@ export default {
       serverItems: [],
       loading: true,
       totalItems: 0
-    }
-  })
+    },
+    showParcelWindow: false
+  }),
+  components: {
+    ParcelWindow
+  }
 }
 </script>

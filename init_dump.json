@@ -1,10 +1,126 @@
 [
     {
+        "model": "contenttypes.contenttype",
+        "pk": 1,
+        "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 2,
+        "fields": {
+            "app_label": "auth",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 3,
+        "fields": {
+            "app_label": "auth",
+            "model": "group"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": {
+            "app_label": "auth",
+            "model": "user"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": {
+            "app_label": "sessions",
+            "model": "session"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 7,
+        "fields": {
+            "app_label": "parcify_app",
+            "model": "parcel"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 8,
+        "fields": {
+            "app_label": "parcify_app",
+            "model": "parcellocker"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 9,
+        "fields": {
+            "app_label": "parcify_app",
+            "model": "locker"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 10,
+        "fields": {
+            "app_label": "parcify_app",
+            "model": "parcelorder"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "hubg3vxik1d9hn98shv2zjwotdl4404n",
+        "fields": {
+            "session_data": ".eJxVjMsOwiAQRf-FtSGd6QNw6d5vIMMMSNVAUtqV8d-1SRe6veec-1KetjX7rcXFz6LOCtTpdwvEj1h2IHcqt6q5lnWZg94VfdCmr1Xi83K4fweZWv7WDifTkcMwAgEb2ycEtkCTYEoJXUxinXGMdghdGMT0AEiIcWSmEEm9P9YGOCg:1r5PQt:7Ovy18YzLWxbX2syGndKUNnkrCZ4xBqaAy1rWCop9WM",
+            "expire_date": "2023-12-05T12:00:47.696Z"
+        }
+    },
+    {
+        "model": "parcify_app.parcel",
+        "pk": 2,
+        "fields": {
+            "sender": "John Doe from USA",
+            "receiver": "Joe Doe in Latvia",
+            "size": "L",
+            "paid": false,
+            "placedOn": "2023-11-21T12:02:53.962Z",
+            "updatedOn": "2023-11-21T14:02:00Z",
+            "status": "Placed",
+            "locker": 13
+        }
+    },
+    {
+        "model": "parcify_app.parcel",
+        "pk": 4,
+        "fields": {
+            "sender": "Neo from Liepaja",
+            "receiver": "Society in Riga",
+            "size": "M",
+            "paid": false,
+            "placedOn": "2023-11-21T12:04:48.701Z",
+            "updatedOn": "2023-11-21T14:02:00Z",
+            "status": "Placed",
+            "locker": 6
+        }
+    },
+    {
         "model": "parcify_app.parcellocker",
         "pk": 2,
         "fields": {
             "sizes": "XS,S,M,L,XL",
-            "status": "Maintanence",
+            "status": "Open",
             "city": "Riga",
             "address": "TC Alfa"
         }
@@ -24,7 +140,7 @@
         "pk": 4,
         "fields": {
             "sizes": "XS,S,M",
-            "status": "Closed",
+            "status": "Open",
             "city": "Sigulda",
             "address": "Rigas str"
         }
@@ -44,7 +160,7 @@
         "pk": 6,
         "fields": {
             "sizes": "XS,S,M",
-            "status": "Open",
+            "status": "Closed",
             "city": "Riga",
             "address": "Brivibas str"
         }
@@ -53,135 +169,135 @@
         "model": "parcify_app.locker",
         "pk": 1,
         "fields": {
+            "parcelLocker": 2,
             "size": "XS",
-            "empty": true,
-            "parcelLocker": 2
+            "empty": true
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 2,
         "fields": {
+            "parcelLocker": 2,
             "size": "S",
-            "empty": false,
-            "parcelLocker": 2
+            "empty": true
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 3,
         "fields": {
+            "parcelLocker": 3,
             "size": "XS",
-            "empty": false,
-            "parcelLocker": 3
+            "empty": true
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 4,
         "fields": {
+            "parcelLocker": 3,
             "size": "S",
-            "empty": true,
-            "parcelLocker": 3
+            "empty": true
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 5,
         "fields": {
+            "parcelLocker": 4,
             "size": "S",
-            "empty": true,
-            "parcelLocker": 4
+            "empty": true
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 6,
         "fields": {
+            "parcelLocker": 4,
             "size": "M",
-            "empty": true,
-            "parcelLocker": 4
+            "empty": false
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 7,
         "fields": {
+            "parcelLocker": 5,
             "size": "S",
-            "empty": true,
-            "parcelLocker": 5
+            "empty": true
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 8,
         "fields": {
+            "parcelLocker": 5,
             "size": "M",
-            "empty": false,
-            "parcelLocker": 5
+            "empty": true
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 9,
         "fields": {
+            "parcelLocker": 5,
             "size": "L",
-            "empty": true,
-            "parcelLocker": 5
+            "empty": true
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 10,
         "fields": {
+            "parcelLocker": 6,
             "size": "XS",
-            "empty": false,
-            "parcelLocker": 6
+            "empty": true
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 11,
         "fields": {
+            "parcelLocker": 6,
             "size": "S",
-            "empty": true,
-            "parcelLocker": 6
+            "empty": true
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 12,
         "fields": {
+            "parcelLocker": 6,
             "size": "M",
-            "empty": true,
-            "parcelLocker": 6
+            "empty": true
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 13,
         "fields": {
+            "parcelLocker": 2,
             "size": "L",
-            "empty": true,
-            "parcelLocker": 2
+            "empty": false
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 14,
         "fields": {
+            "parcelLocker": 5,
             "size": "XL",
-            "empty": false,
-            "parcelLocker": 5
+            "empty": true
         }
     },
     {
         "model": "parcify_app.locker",
         "pk": 15,
         "fields": {
+            "parcelLocker": 5,
             "size": "XS",
-            "empty": true,
-            "parcelLocker": 5
+            "empty": true
         }
     }
 ]

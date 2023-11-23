@@ -17,3 +17,4 @@ class ParcelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Parcel
         fields = '__all__'
+        read_only_fields = ('id','placedOn','updatedOn')
