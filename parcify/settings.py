@@ -86,17 +86,9 @@ REST_FRAMEWORK = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.sqlite3',
 
-        'NAME': 'parcify_db',
-
-        'USER': 'parcify_db',
-
-        'PASSWORD': 'parcify_db',
-
-        'HOST': 'localhost',
-
-        'PORT': '5432',
+        'NAME': BASE_DIR / 'db.sqlite3'
     }
 }
 
